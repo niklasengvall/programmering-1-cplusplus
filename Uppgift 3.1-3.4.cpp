@@ -9,34 +9,35 @@
 // | UTVÄRDERING: Kul uppgift, tog ett tag och slutföra. Allrahelst sista uppg.|
 // |                                                                           |
 // |              Metodlösning:                                                |
-// |              1. Kikade i läroboken på exempel xxxx, sidan xx som tog upp  |
-// |                 klassen Person. Skrev därefter raderna xx-xx och testade  |
+// |              1. Kikade i läroboken på exempel 14.1, sidan 115 som tog upp |
+// |                 klassen Dog. Skrev därefter raderna 54-67 och testade     |
 // |                 klassen med en egen liten rutin i main som jag raderade   |
 // |                 efter test.                                               |
-// |              2. Kikade i läroboken om linjär sökning, exempel xxxx,       |
-// |                 sid. Skrev sedan funktionen på raderna xx-xx och la in en |
+// |              2. Kikade i läroboken om linjär sökning, exempel 15.1, sid.  |
+// |                 126. Skrev sedan funktionen på raderna 79-89 och la in en |
 // |                 manuell tilldelning av Personvektorn för att kunna testa  |
 // |                 funktionen (uppgift 3.3)                                  |
 // |              3. Började sedan med bubblesort-funktionen och tog idén från |
-// |                 bokens exempel xx.x, sid. xxx samt instruktionen för      |
+// |                 bokens exempel 15.3, sid. 135 samt instruktionen för      |
 // |                 inlämningsuppgift 3. Byggde vidare på main-funktionen för |
 // |                 att även testa detta, dvs. uppgift 3.3 med allt bestämt i |
 // |                 koden. Ingen manuell inmatning med cin ännu.              |
 // |              4. Uppgift 3.4 - Va e detta? I boken fanns en itterativ      |
-// |                 lösning och i instruktionen en grov pseudokod, tack o lov |
+// |                 pseudokodslösning av binär sökning, se sid. 130, tur nog  |
 // |                 förstod jag kodexemplet bra men sen? Vad är en rekursiv   |
 // |                 funktion? Ja att den anropar sig själv det är klart. Men  |
 // |                 att sedan omsätta detta i praktiken det är en konst. Jag  |
 // |                 gorde säkert närmare 30-40 kompileringar innan jag var    |
 // |                 färdig med all kod. La in egen variabelkontroll, gjorde   |
-// |                 om en del ifrån pseudokoden ANNARS OM vektorn består av   |
-// |                 endast ett element till else if(first >= last). I övrigt  |
+// |                 om en del ifrån pseudokoden "ANNARS OM vektorn består av  |
+// |                 endast ett element" till else if(first >= last). I övrigt |
 // |                 så använder jag referensanrop för att lösa detta, dock ej |
+// |                 på Person p[]-vektorn.                                    |
 // |                                                                           |
 // |                 Förslag på förbättringar:                                 |
 // |                 1. Att göra om funktionerna till metoder för bättre       |
 // |                    inkapsling. Samt använda bätter minnestilldelning med  |
-// |                    new och pekare till klassernas objekt, metoder,attribut|                                         |
+// |                    new och pekare till klassernas objekt.                 |
 // |                 2. Göra om Person p[]-vektorn till pekarreferens för att  |
 // |                    undvika minnesspill.                                   |
 // |                 3. Att inte använda rekursivt anrop på binarSok om        |
@@ -44,10 +45,10 @@
 // |                    och programmet riskerar att krascha.                   |
 // +---------------------------------------------------------------------------+
 //
-#include <iostream> // Preprocessordirektiv: inkludera funktioner för in-utdata
-#include <string>   // och stränghantering
+#include <iostream> 
+#include <string>   
 
-using namespace std; // Vi ska använda standardbibliotekets funktioner
+using namespace std;
 
 // KLASS: Person - För uppgift 3.1
 class Person
@@ -56,7 +57,7 @@ public:
     string namn; // Attribut - Namn på person
     int alder;   // Personens ålder
 
-    void SkrivUt();  // Metodprototyp - för att skriva ut attributen på skärmen
+    void SkrivUt();  // Metodprototyp 
 };
 
 // METOD: Person::SkrivUt() - Skriver ut klassens attribut, namn och alder
@@ -127,7 +128,7 @@ int binarSok(Person p[], int &alder, int &first, int &last)
 	int mid = (first + last) / 2; // Utgå från mittenvärdet när vi söker
 
 	// Nedanstående rad använder jag för att se förloppet under felsökning
-	//cout <<"Mid: " << mid << "First: " << first << ", Last: " << last << endl;
+	//cout <<"Mid: " << mid << " First: " << first << ", Last: " << last << endl;
 
 	if(p[mid].alder == alder) // Värdet hittat
 	{
@@ -152,7 +153,8 @@ int binarSok(Person p[], int &alder, int &first, int &last)
 int main()
 {
     Person familj[4];
-/*  // Initiering av en familje-vektor med fyra personer - Uppgift 3.3 + 3.4
+/*  Den kommenterade koden nedan har ersatts av inmatning från användaren 
+    // Initiering av en familje-vektor med fyra personer - Uppgift 3.3 + 3.4
     familj[0].namn = "Niklas";
     familj[0].alder = 48;
     familj[1].namn = "Daniel";
